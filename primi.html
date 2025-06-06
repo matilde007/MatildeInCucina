@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primi Piatti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fffaf0;
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #fef4e8;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍝 Primi Piatti</h1>
+  <hr>
+
+  <div class="card-container">
+    <a href="carbonara.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.jpg" alt="Pasta alla Carbonara">
+        <h3>Pasta alla Carbonara</h3>
+        <p>Un grande classico della cucina romana, semplice e gustoso.</p>
+      </div>
+    </a>
+    <a href="lasagne.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.1.jpg" alt="Lasagne alla Bolognese">
+        <h3>Lasagne alla Bolognese</h3>
+        <p>Pasta al forno con ragù, besciamella e formaggio gratinato.</p>
+      </div>
+    </a>
+    <a href="risotto.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.2.jpg" alt="Risotto alla Milanese">
+        <h3>Risotto alla Milanese</h3>
+        <p>Riso mantecato allo zafferano, cremoso e dorato.</p>
+      </div>
+    </a>
+    <a href="amatriciana.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.3.jpg" alt="Pasta all'Amatriciana">
+        <h3>Pasta all'Amatriciana</h3>
+        <p>L’Amatriciana rappresenta l’essenza della cucina italiana: pochi ingredienti, ben bilanciati, e una forte identità territoriale.</p>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p><a href="test.html"><b>⬅ Torna alla Home</b></a></p>
+  </footer>
+
+</body>
+</html>

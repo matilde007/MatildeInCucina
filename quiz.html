@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz sulla Cucina</title>
+  <style>
+    body {
+      background-color: #fffaf0;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #c0392b;
+    }
+    .question {
+      background-color: #fff;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .question p {
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+    .correction {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #a93226;
+    }
+    .result {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .page {
+      display: none;
+    }
+    .page.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍳 Quiz sulla Cucina</h1>
+
+  <form id="quizForm"></form>
+
+  <div class="result" id="result"></div>
+  <button id="retryButton" onclick="location.reload()" style="display:none">🔁 Riprova</button>
+
+  <script>
+    const domande = [
+      {id: 'q1', domanda: "Qual è l'ingrediente principale del pesto alla genovese?", risposte: {a: 'Prezzemolo', b: 'Basilico', c: 'Spinaci'}, corretta: 'b'},
+      {id: 'q2', domanda: "Quale formaggio si usa tradizionalmente nella carbonara?", risposte: {a: 'Parmigiano', b: 'Gorgonzola', c: 'Pecorino'}, corretta: 'c'},
+      {id: 'q3', domanda: "Che tipo di riso si usa per il risotto?", risposte: {a: 'Basmati', b: 'Arborio', c: 'Jasmine'}, corretta: 'b'},
+      {id: 'q4', domanda: "Cosa indica il termine 'al dente'?", risposte: {a: 'Pasta troppo cotta', b: 'Leggermente dura al centro', c: 'Pasta cruda'}, corretta: 'b'},
+      {id: 'q7', domanda: "Quale ingrediente NON si usa nel tiramisù classico?", risposte: {a: 'Latte', b: 'Savoiardi', c: 'Mascarpone'}, corretta: 'a'},
+      {id: 'q8', domanda: "Cos'è il soffritto?", risposte: {a: 'Un misto di verdure cotte in olio', b: 'Una salsa di pomodoro speziata', c: 'Un tipo di cottura al forno'}, corretta: 'a'},
+      {id: 'q9', domanda: "Quale tra questi è un formaggio a pasta filata?", risposte: {a: 'Mozzarella', b: 'Ricotta', c: 'Gorgonzola'}, corretta: 'a'},
+      {id: 'q10', domanda: "Quale tra questi è un dolce tipico siciliano?", risposte: {a: 'Cannolo', b: 'Babà', c: 'Panettone'}, corretta: 'a'},
+      {id: 'q11', domanda: "Quale nazione ha dato origine al sushi?", risposte: {a: 'Cina', b: 'Corea', c: 'Giappone'}, corretta: 'c'},
+      {id: 'q12', domanda: "Chi ha più stelle Michelin tra Cannavacciuolo, Barbieri e Cracco?", risposte: {a: 'Bruno Barbieri', b: 'Carlo Cracco', c: 'Antonino Cannavacciuolo'}, corretta: 'c'},
+      {id: 'q13', domanda: "In quale città italiana si tiene ogni anno la fiera internazionale del tartufo bianco?", risposte: {a: 'Parma', b: 'Alba', c: 'Bologna'}, corretta: 'b'},
+      {id: 'q14', domanda: "Qual è il cereale usato per fare il couscous tradizionale?", risposte: {a: 'Riso', b: 'Mais', c: 'Semola di grano duro'}, corretta: 'c'},
+      {id: 'q15', domanda: "Quale frutto tropicale è anche conosciuto come 'frutto del drago'?", risposte: {a: 'Mango', b: 'Pitaya', c: 'Litchi'}, corretta: 'b'},
+      {id: 'q16', domanda: "Quale tipo di cottura si usa per il 'sous-vide'?", risposte: {a: 'Alla brace', b: 'In padella', c: 'Sottovuoto a bassa temperatura'}, corretta: 'c'},
+      {id: 'q17', domanda: "Cosa contiene una vera 'Minestrone alla genovese'?", risposte: {a: 'Pasta e basilico', b: 'Pesto e verdure', c: 'Solo riso'}, corretta: 'b'},
+      {id: 'q18', domanda: "Quale di questi dolci è tipico del Carnevale italiano?", risposte: {a: 'Panettone', b: 'Zeppole', c: 'Chiacchiere'}, corretta: 'c'},
+      {id: 'q19', domanda: "La mozzarella di bufala campana è un prodotto…", risposte: {a: 'DOP', b: 'IGP', c: 'STG'}, corretta: 'a'},
+      {id: 'q20', domanda: "Quale chef italiano è stato il primo a ottenere 3 stelle Michelin in Italia?", risposte: {a: 'Massimo Bottura', b: 'Gualtiero Marchesi', c: 'Heinz Beck'}, corretta: 'b'},
+      {id: 'q21', domanda: "Cosa sono i 'finger food'?", risposte: {a: 'Piatti speziati', b: 'Cibi da mangiare con le mani', c: 'Dolci mignon'}, corretta: 'b'}
+    ];
+
+    function creaQuiz() {
+      const form = document.getElementById('quizForm');
+      form.innerHTML = '';
+      const domandePerPagina = 6;
+      const totalePagine = Math.ceil(domande.length / domandePerPagina);
+
+      for (let i = 0; i < totalePagine; i++) {
+        const pageDiv = document.createElement('div');
+        pageDiv.className = 'page';
+        if (i === 0) pageDiv.classList.add('active');
+        pageDiv.id = `page${i+1}`;
+
+        for (let j = 0; j < domandePerPagina; j++) {
+          const index = i * domandePerPagina + j;
+          if (index >= domande.length) break;
+          const d = domande[index];
+          const div = document.createElement('div');
+          div.className = 'question';
+          div.id = `${d.id}-box`;
+          div.innerHTML = `<p>${index+1}. ${d.domanda}</p>` +
+            Object.entries(d.risposte).map(([key, val]) => `<label><input type="radio" name="${d.id}" value="${key}"> ${val}</label><br>`).join('') +
+            `<div class="correction" id="${d.id}-feedback"></div>`;
+          pageDiv.appendChild(div);
+        }
+
+        const isLast = i === totalePagine - 1;
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = isLast ? 'Correggi' : 'Prossima pagina';
+        button.onclick = isLast ? correggiQuiz : () => showNextPage(i+1);
+        pageDiv.appendChild(button);
+
+        form.appendChild(pageDiv);
+      }
+    }
+
+    function showNextPage(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(`page${pageNum+1}`).classList.add('active');
+    }
+
+function correggiQuiz() {
+  let punteggio = 0;
+  const risposte = Object.fromEntries(domande.map(d => [d.id, d.corretta]));
+  const riepilogo = [];
+
+  for (let q in risposte) {
+    const selezionata = document.querySelector(`input[name="${q}"]:checked`);
+    const feedback = document.getElementById(`${q}-feedback`);
+    const domanda = domande.find(d => d.id === q);
+    const rispostaCorretta = domanda.risposte[risposte[q]];
+
+    if (selezionata) {
+      const rispostaData = domanda.risposte[selezionata.value];
+      if (selezionata.value === risposte[q]) {
+        punteggio++;
+        feedback.innerHTML = "✅ Risposta corretta!";
+        feedback.className = "correction correct";
+        riepilogo.push({
+          numero: domande.indexOf(domanda) + 1,
+          domanda: domanda.domanda,
+          esito: 'corretta',
+          rispostaUtente: rispostaData,
+          rispostaCorretta: rispostaCorretta
+        });
+      } else {
+        feedback.innerHTML = `❌ Risposta sbagliata. Quella corretta è: <b>${rispostaCorretta}</b>`;
+        feedback.className = "correction incorrect";
+        riepilogo.push({
+          numero: domande.indexOf(domanda) + 1,
+          domanda: domanda.domanda,
+          esito: 'sbagliata',
+          rispostaUtente: rispostaData,
+          rispostaCorretta: rispostaCorretta
+        });
+      }
+    } else {
+      feedback.innerHTML = "⚠️ Nessuna risposta selezionata.";
+      feedback.className = "correction incorrect";
+      riepilogo.push({
+        numero: domande.indexOf(domanda) + 1,
+        domanda: domanda.domanda,
+        esito: 'non risposto',
+        rispostaUtente: '-',
+        rispostaCorretta: rispostaCorretta
+      });
+    }
+  }
+
+  // Resoconto finale
+  let reportHTML = `<p>Hai totalizzato <b>${punteggio}</b> su <b>${domande.length}</b> punti.</p>`;
+  reportHTML += `<h3>📋 Riepilogo:</h3><ul>`;
+  riepilogo.forEach(item => {
+    if (item.esito === 'corretta') {
+      reportHTML += `<li>✅ <b>${item.numero}. ${item.domanda}</b><br>Risposta data: ${item.rispostaUtente}</li>`;
+    } else if (item.esito === 'sbagliata') {
+      reportHTML += `<li>❌ <b>${item.numero}. ${item.domanda}</b><br>Risposta data: ${item.rispostaUtente}<br>✔️ Corretta: ${item.rispostaCorretta}</li>`;
+    } else {
+      reportHTML += `<li>⚠️ <b>${item.numero}. ${item.domanda}</b><br>Non hai risposto<br>✔️ Corretta: ${item.rispostaCorretta}</li>`;
+    }
+  });
+  reportHTML += `</ul>`;
+
+  document.getElementById("result").innerHTML = reportHTML;
+  document.getElementById("retryButton").style.display = 'block';
+}
+
+
+
+    creaQuiz();
+  </script>
+
+</body>
+</html>

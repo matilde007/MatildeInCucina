@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secondi Piatti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fffaf0;
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 20px;
+      color: #333;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #fef4e8;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍗 Secondi Piatti</h1>
+  <hr>
+
+  <div class="card-container">
+    <a href="filetto al pepe verde.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.6.jpg" alt="Filetto al Pepe Verde">
+        <h3>Filetto al Pepe Verde</h3>
+        <p>Un secondo piatto raffinato dal gusto deciso, perfetto per chi ama i sapori intensi ma equilibrati.</p>
+      </div>
+    </a>
+    <a href="scaloppine.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.4.jpg" alt="Scaloppine al Limone">
+        <h3>Scaloppine al Limone</h3>
+        <p>Fettine di carne dorate al burro con delicata salsa al limone.</p>
+      </div>
+    </a>
+    <a href="pollo alla pizzaiola.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.5.jpg" alt="Pollo alla Pizzaiola">
+        <h3>Pollo alla Pizzaiola</h3>
+        <p>Un secondo piatto semplice e ricco di gusto, ispirato ai sapori tipici della cucina mediterranea.</p>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p><a href="test.html"><b>⬅ Torna alla Home</b></a></p>
+  </footer>
+
+</body>
+</html>

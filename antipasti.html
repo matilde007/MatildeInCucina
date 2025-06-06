@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antipasti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fffaf0;
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 10px;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+    .card img {
+    border-radius: 10px;
+  }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      background-color: #fef4e8;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🥖 Antipasti</h1>
+  </header>
+
+  <div class="card-container">
+    <a href="Impasto.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.01.jpg" alt="Impasto Buffet" width="100%">
+        <h3>🍕🥖 Impasto per Buffet</h3>
+        <p>Impasto perfetto per creare diverse preparazioni.</p>
+      </div>
+    </a>
+
+    <a href="crocchette.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.03.jpg" alt="Crocchette di Patate" width="100%">
+        <h3>🥔 Crocchette di Patate</h3>
+        <p>Le crocchette di patate e formaggio sono un antipasto sfizioso e saporito.</p>
+      </div>
+    </a>
+
+    <a href="arancini.html" style="text-decoration:none; color:inherit;">
+      <div class="card">
+        <img src="download.02.jpg" alt="Arancini di Riso" width="100%">
+        <h3>🍘 Arancini di Riso</h3>
+        <p>Riso farcito con ragù e formaggio, impanato e fritto: uno street food irresistibile.</p>
+      </div>
+    </a>
+  </div>
+
+  <footer>
+    <p><a href="test.html">⬅ Torna alla Home</a></p>
+  </footer>
+
+</body>
+</html>
